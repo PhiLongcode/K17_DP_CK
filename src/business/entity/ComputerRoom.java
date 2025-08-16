@@ -4,8 +4,9 @@ import java.util.Date;
 
 public class ComputerRoom extends Room {
     private int numComputers;
-    public ComputerRoom(String roomId, String buildingBlock, Double area, Integer numLightBulbs, Date startDateOfOperation, int numComputers) {
-        super(roomId, buildingBlock, area, numLightBulbs, startDateOfOperation);
+
+    public ComputerRoom(String roomId, String buildingBlock, Double area, Integer numLightBulbs, Date startDateOfOperation, int typeId, int numComputers) {
+        super(roomId, buildingBlock, area, numLightBulbs, startDateOfOperation, typeId);
         this.numComputers = numComputers;
     }
 

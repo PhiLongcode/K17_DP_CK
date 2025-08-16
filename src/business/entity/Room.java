@@ -8,13 +8,14 @@ public abstract class Room {
     protected Double  area;
     protected Integer  numLightBulbs;
     protected Date startDateOfOperation;
-
-    public Room(String roomId, String buildingBlock, Double area, Integer numLightBulbs, Date startDateOfOperation) {
+    protected  int typeId;
+    public Room(String roomId, String buildingBlock, Double area, Integer numLightBulbs, Date startDateOfOperation , int typeId) {
         this.roomId = roomId;
         this.buildingBlock = buildingBlock;
         this.area = area;
         this.numLightBulbs = numLightBulbs;
         this.startDateOfOperation = startDateOfOperation;
+        this.typeId = typeId;
     }
 
     public String getRoomId() {
