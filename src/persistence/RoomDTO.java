@@ -14,6 +14,7 @@ public class RoomDTO {
     public String specialization;
     public int capacity;
     public Boolean hasSink;
+    public int typeId;
 
 
 }

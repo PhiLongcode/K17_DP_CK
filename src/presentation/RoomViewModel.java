@@ -1,6 +1,6 @@
 package presentation;
 
-import business.Room;
+import business.entity.Room;
 import Observer.Publisher;
 
 import java.util.ArrayList;

@@ -1,33 +1,37 @@
 package presentation.DeleteRoom;
 
+import Observer.Subscriber;
+
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-public class DialogNotiDeleteRoom extends JDialog {
+public class DialogNotiDeleteRoomView extends JDialog implements Subscriber {
     private JPanel contentPane;
     private JButton buttonOK;
     private JButton buttonCancel;
-    private JLabel messageLabel; // Nhãn để hiển thị thông báo
+    private JLabel messageLabel;
+    private final DeleteRoomModel viewModel;
 
     // Constructor
-    public DialogNotiDeleteRoom(Frame parent, String message) {
+    public DialogNotiDeleteRoomView(Frame parent, DeleteRoomModel viewModel) {
         super(parent, "Delete Room Notification", true);
+        this.viewModel = viewModel;
+
         setupUI();
-        initializeComponents(message);
         addActionListeners();
-        setLocationRelativeTo(parent); // Căn giữa màn hình
-        setSize(300, 150); // Kích thước cửa sổ
+
+        // Đăng ký lắng nghe thay đổi từ ViewModel
+        this.viewModel.addSubscriber(this);
+
+        setLocationRelativeTo(parent);
+        setSize(300, 150);
     }
 
-    // Thiết lập giao diện
     private void setupUI() {
         contentPane = new JPanel(new BorderLayout(10, 10));
         contentPane.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
-        messageLabel = new JLabel();
-        messageLabel.setHorizontalAlignment(JLabel.CENTER);
+        messageLabel = new JLabel("", JLabel.CENTER);
         contentPane.add(messageLabel, BorderLayout.CENTER);
 
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 10));
@@ -40,32 +44,13 @@ public class DialogNotiDeleteRoom extends JDialog {
         setContentPane(contentPane);
     }
 
-    // Khởi tạo các thành phần với thông báo
-    private void initializeComponents(String message) {
-        messageLabel.setText(message);
-    }
-
-    // Thêm sự kiện cho các nút
     private void addActionListeners() {
-        buttonOK.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                dispose(); // Đóng dialog khi nhấn OK
-            }
-        });
-
-        buttonCancel.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                dispose(); // Đóng dialog khi nhấn Cancel
-            }
-        });
+        buttonOK.addActionListener(e -> dispose());
+        buttonCancel.addActionListener(e -> dispose());
     }
 
-    // Phương thức main để test
- /*   public static void main(String[] args) {
-        JFrame frame = new JFrame();
-        DialogNotiDeleteRoom dialog = new DialogNotiDeleteRoom(frame, "Room deleted successfully");
-        dialog.setVisible(true);
-    }*/
+    @Override
+    public void update() {
+        messageLabel.setText(viewModel.getMessage());
+    }
 }

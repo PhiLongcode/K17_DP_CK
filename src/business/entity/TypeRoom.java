@@ -1,6 +1,4 @@
-package business;
-
-import java.util.ArrayList;
+package business.entity;
 
 public class TypeRoom {
     private int id;

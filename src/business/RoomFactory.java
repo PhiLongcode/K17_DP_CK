@@ -1,5 +1,9 @@
 package business;
 
+import business.entity.ComputerRoom;
+import business.entity.LaboratoryRoom;
+import business.entity.LectureRoom;
+import business.entity.Room;
 import persistence.RoomDTO;
 
 public class RoomFactory {
@@ -14,7 +18,8 @@ public class RoomFactory {
                         roomDTO.area,
                         roomDTO.numLightBulbs,
                         roomDTO.startDateOfOperation,
-                        roomDTO.numComputers
+                        roomDTO.numComputers,
+                        roomDTO.typeId
                 );
 
             case "laboratoryroom":
@@ -24,9 +29,11 @@ public class RoomFactory {
                         roomDTO.area,
                         roomDTO.numLightBulbs,
                         roomDTO.startDateOfOperation,
+                        roomDTO.typeId,
                         roomDTO.specialization,
                         roomDTO.capacity,
                         roomDTO.hasSink
+
                 );
 
             case "lectureroom":
@@ -36,7 +43,9 @@ public class RoomFactory {
                         roomDTO.area,
                         roomDTO.numLightBulbs,
                         roomDTO.startDateOfOperation,
+                        roomDTO.typeId,
                         roomDTO.hasProject
+
                 );
 
             default:

@@ -1,4 +1,9 @@
 package presentation.OpenDialogComfirmDeteleRoom;
 
-public class OpenDialogComfirmDeleteModel {
+import Observer.Publisher;
+
+public class OpenDialogComfirmDeleteModel extends Publisher {
+
+ public  ViewDeatailRoomDTO viewDeatailRoomDTO;
+
 }

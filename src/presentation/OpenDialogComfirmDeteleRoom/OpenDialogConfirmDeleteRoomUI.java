@@ -1,12 +1,23 @@
 package presentation.OpenDialogComfirmDeteleRoom;
 import Observer.Subscriber;
+import business.DeleteRoom.DeleteRoomUsecase;
+import persistence.DeleteRoom.DeleteRoomGateway;
+import persistence.DeleteRoom.MySQLDeleteRoomDAO;
+import persistence.OpenDialogComfirmDeteleRoom.MySQLOpenDialogComfirmDeteleRoomDAO;
+import persistence.OpenDialogComfirmDeteleRoom.RoomDTO;
+import presentation.DeleteRoom.DeleteRoomController;
+import presentation.DeleteRoom.DeleteRoomModel;
+import presentation.DeleteRoom.DialogNotiDeleteRoomView;
+
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
 public class OpenDialogConfirmDeleteRoomUI extends JDialog implements Subscriber {
-
+    private JFrame parent;
     private JLabel lblRoomId;
     private JLabel lblBuildingBlock;
     private JLabel lblArea;
@@ -18,11 +29,20 @@ public class OpenDialogConfirmDeleteRoomUI extends JDialog implements Subscriber
     private JButton btnDelete;
     private JButton btnCancel;
 
+    private  OpenDialogComfirmDeleteModel viewModel;
     public OpenDialogConfirmDeleteRoomUI(JFrame parent) {
         super(parent, "Xác nhận xóa phòng", true);
-        initUI();
-    }
 
+        initUI();
+        bindEvents();
+
+    }
+    public void setViewModel(OpenDialogComfirmDeleteModel viewModel) {
+        this.viewModel = viewModel;
+
+        //đăng ký subscriber với publisher
+        viewModel.addSubscriber(this);
+    }
     private void initUI() {
         setLayout(new BorderLayout(10, 10));
 
@@ -73,21 +93,54 @@ public class OpenDialogConfirmDeleteRoomUI extends JDialog implements Subscriber
         lblBuildingBlock.setText(room.buildingBlock);
         lblArea.setText(room.area);
         lblRoomType.setText(room.roomType);
-        lblNumLightBulbs.setText(room.numLightBulbs));
+        lblNumLightBulbs.setText(room.numLightBulbs);
         lblStartDateOfOperation.setText(room.startDateOfOperation);
         lblMeetsStandard.setText(room.meetsStandard );
     }
 
-    public void onDelete(ActionListener listener) {
-        btnDelete.addActionListener(listener);
-    }
 
-    public void onCancel(ActionListener listener) {
-        btnCancel.addActionListener(listener);
+
+    private void bindEvents() {
+        // Sự kiện nút Xóa
+
+        btnDelete.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String roomId = lblRoomId.getText();
+                // Khởi tạo model trước
+                DeleteRoomModel model = new DeleteRoomModel();
+                // gate
+                DeleteRoomGateway gateway;
+                try {
+                    gateway = new MySQLDeleteRoomDAO();
+                } catch (ClassNotFoundException ex) {
+                    throw new RuntimeException(ex);
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
+                }
+                DeleteRoomUsecase uc = new DeleteRoomUsecase(gateway);
+DeleteRoomController controller = new DeleteRoomController(uc, model);
+
+                DialogNotiDeleteRoomView view = new DialogNotiDeleteRoomView(parent,model );
+
+               controller.deleteRoom(roomId);// Gọi use case
+                view.setVisible(true);
+
+                dispose(); // Đóng dialog sau khi xóa
+            }
+        });
+
+        // Sự kiện nút Hủy
+        btnCancel.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose(); // Đóng dialog
+            }
+        });
     }
 
     @Override
     public void update() {
-
+    this.setRoomDetails(viewModel.viewDeatailRoomDTO);
     }
 }

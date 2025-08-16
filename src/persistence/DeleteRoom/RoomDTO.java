@@ -1,4 +1,4 @@
-package persistence.OpenDialogComfirmDeteleRoom;
+package persistence.DeleteRoom;
 
 import java.util.Date;
 
@@ -16,7 +16,7 @@ public class RoomDTO {
     public Boolean hasSink;
     public int typeId;
 
-    public RoomDTO(String roomID, String buildingBlock, Double area, String roomType, int numLightBulbs, Date startDateOfOperation, Boolean hasProject, int numComputers, String specialization, int capacity, Boolean hasSink ,  int typeId) {
+    public RoomDTO(String roomID, String buildingBlock, Double area, String roomType, int numLightBulbs, Date startDateOfOperation, Boolean hasProject, int numComputers, String specialization, int capacity, Boolean hasSink , int typeId) {
         this.roomID = roomID;
         this.buildingBlock = buildingBlock;
         this.area = area;
