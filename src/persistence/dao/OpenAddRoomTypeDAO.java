@@ -27,6 +27,7 @@ public class OpenAddRoomTypeDAO implements OpenAddRoomGateway {
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 RoomTypeDTO roomTypeDTO = new RoomTypeDTO();
+                roomTypeDTO.setId(resultSet.getInt("id"));
                 roomTypeDTO.setName(resultSet.getString("name"));
                 roomTypeDTO.setDescription(resultSet.getString("description"));
                 list.add(roomTypeDTO);

@@ -9,7 +9,6 @@ import persistence.RoomDTO;
 public class RoomFactory {
     public static Room createRoom(RoomDTO roomDTO) {
         String type = roomDTO.roomType.toLowerCase();
-
         switch (type) {
             case "computerroom":
                 return new ComputerRoom(
@@ -21,7 +20,6 @@ public class RoomFactory {
                         roomDTO.numComputers,
                         roomDTO.typeId
                 );
-
             case "laboratoryroom":
                 return new LaboratoryRoom(
                         roomDTO.roomID,
@@ -33,9 +31,7 @@ public class RoomFactory {
                         roomDTO.specialization,
                         roomDTO.capacity,
                         roomDTO.hasSink
-
                 );
-
             case "lectureroom":
                 return new LectureRoom(
                         roomDTO.roomID,
@@ -45,9 +41,7 @@ public class RoomFactory {
                         roomDTO.startDateOfOperation,
                         roomDTO.typeId,
                         roomDTO.hasProject
-
                 );
-
             default:
                 throw new IllegalArgumentException("Unknown room type: " + roomDTO.roomType);
         }
