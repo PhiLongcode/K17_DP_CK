@@ -15,9 +15,9 @@ public class ConnectDB {
     }
 
     public static void main(String[] args) {
-        ConnectDB connectDB = new ConnectDB();
+        ConnectDB connectDB = new ConnectDB(); // test thử k có tham chiếu, tham chiếu đến chức năng là getConnettion
         try {
-            connectDB.getConnection();
+            connectDB.getConnection();//gửi thông điệp
             System.out.println("Connected to database successfully");
         } catch (SQLException e) {
             throw new RuntimeException(e);
