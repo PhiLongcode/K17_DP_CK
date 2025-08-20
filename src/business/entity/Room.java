@@ -3,18 +3,19 @@ package business.entity;
 import java.util.Date;
 
 public abstract class Room {
- protected String roomId;
+    protected String roomId;
     protected String buildingBlock;
-    protected Double  area;
-    protected Integer  numLightBulbs;
-    protected Date startDateOfOperation;
-    protected  int typeId;
-    public Room(String roomId, String buildingBlock, Double area, Integer numLightBulbs, Date startDateOfOperation , int typeId) {
+    protected Double area;
+    protected Integer numOfLights;
+    protected Date startDate;
+    protected int typeId;
+
+    public Room(String roomId, String buildingBlock, Double area, Integer numOfLights, Date startDate, int typeId) {
         this.roomId = roomId;
         this.buildingBlock = buildingBlock;
         this.area = area;
-        this.numLightBulbs = numLightBulbs;
-        this.startDateOfOperation = startDateOfOperation;
+        this.numOfLights = numOfLights;
+        this.startDate = startDate;
         this.typeId = typeId;
     }
 
@@ -42,28 +43,28 @@ public abstract class Room {
         this.area = area;
     }
 
-    public Integer getNumLightBulbs() {
-        return numLightBulbs;
+    public Integer getNumOfLights() {
+        return numOfLights;
     }
 
-    public void setNumLightBulbs(Integer numLightBulbs) {
-        this.numLightBulbs = numLightBulbs;
+    public void setNumOfLights(Integer numOfLights) {
+        this.numOfLights = numOfLights;
     }
 
-    public Date getStartDateOfOperation() {
-        return startDateOfOperation;
+    public Date getStartDate() {
+        return startDate;
     }
 
-    public void setStartDateOfOperation(Date startDateOfOperation) {
-        this.startDateOfOperation = startDateOfOperation;
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
     }
 
-    public  abstract  boolean meetsStandard();
-    public  abstract String getRoomType();
+    public abstract boolean meetsStandard();
 
-    public boolean checkSufficientLight()
-    {
-        return (this.getArea() / this.getNumLightBulbs()) <= 10;
+    public abstract String getRoomType();
+
+    public boolean checkSufficientLight() {
+        return (this.getArea() / this.getNumOfLights()) <= 10;
     }
 
 }

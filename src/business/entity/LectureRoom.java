@@ -5,8 +5,9 @@ import java.util.Date;
 public class LectureRoom extends Room {
     private boolean hasProjector;
 
-    public LectureRoom(String roomId, String buildingBlock, Double area, Integer numLightBulbs, Date startDateOfOperation, int typeId, boolean hasProjector) {
-        super(roomId, buildingBlock, area, numLightBulbs, startDateOfOperation, typeId);
+    public LectureRoom(String roomId, String buildingBlock, Double area, Integer numOfLights,
+                       Date startDate, int typeId, boolean hasProjector) {
+        super(roomId, buildingBlock, area, numOfLights, startDate, typeId);
         this.hasProjector = hasProjector;
     }
 
@@ -18,5 +19,13 @@ public class LectureRoom extends Room {
     @Override
     public String getRoomType() {
         return "LectureRoom";
+    }
+
+    public boolean isHasProjector() {
+        return hasProjector;
+    }
+
+    public void setHasProjector(boolean hasProjector) {
+        this.hasProjector = hasProjector;
     }
 }

@@ -1,7 +1,7 @@
 package business.usecase;
 
-import business.TypeRoomFactory;
 import business.entity.TypeRoom;
+import business.factory.TypeRoomFactory;
 import dto.RoomTypeDTO;
 import dto.RoomTypeViewDTO;
 import persistence.gateway.OpenAddRoomGateway;

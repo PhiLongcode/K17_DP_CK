@@ -1,4 +1,4 @@
-package business;
+package business.factory;
 
 import business.entity.TypeRoom;
 import dto.RoomTypeDTO;

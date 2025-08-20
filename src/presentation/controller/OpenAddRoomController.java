@@ -25,12 +25,12 @@ public class OpenAddRoomController {
 
     private List<RoomTypeResDTO> convertToString(List<RoomTypeViewDTO> roomTypeViewDTO) {
         List<RoomTypeResDTO> roomTypeResDTO = new ArrayList<>();
-        int id = 1;
         for (RoomTypeViewDTO roomTypeViewDTO1 : roomTypeViewDTO) {
             RoomTypeResDTO roomTypeResDTO1 = new RoomTypeResDTO();
-            roomTypeResDTO1.setId(String.valueOf(id++));
+            roomTypeResDTO1.setId(String.valueOf(roomTypeViewDTO1.getId()));
             roomTypeResDTO1.setName(roomTypeViewDTO1.getName());
             roomTypeResDTO1.getDescription(roomTypeViewDTO1.getDescription());
+            roomTypeResDTO.add(roomTypeResDTO1);
         }
         return roomTypeResDTO;
     }
