@@ -80,4 +80,21 @@ public class RoomDTO {
         this.typeId = typeId;
     }
     public RoomDTO() {}
+    @Override
+    public String toString() {
+        return "RoomDTO{" +
+                "roomID='" + roomID + '\'' +
+                ", buildingBlock='" + buildingBlock + '\'' +
+                ", area=" + area +
+                ", roomType='" + roomType + '\'' +
+                ", numLightBulbs=" + numLightBulbs +
+                ", startDate=" + startDateOfOperation +
+                ", typeId=" + typeId +
+                ", hasProjector=" + hasProject +
+                ", numComputers=" + numComputers +
+                ", specialization='" + specialization + '\'' +
+                ", capacity=" + capacity +
+                ", hasSink=" + hasSink +
+                '}';
+    }
 }

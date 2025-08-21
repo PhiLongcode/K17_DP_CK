@@ -3,7 +3,7 @@ package business.entity;
 import java.util.Date;
 
 public abstract class Room {
- protected String roomId;
+    protected String roomId;
     protected String buildingBlock;
     protected Double  area;
     protected Integer  numLightBulbs;

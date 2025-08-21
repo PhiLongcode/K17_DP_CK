@@ -19,13 +19,18 @@ public class ViewRoomUseCase {
     }
     // hành động
     public List<ViewRoomDTO> execute() throws SQLException, ParseException {
-        List<RoomDTO> listDTO = listViewDAO.viewRoom() ;
+        List<RoomDTO> listDTO = listViewDAO.viewRoom();
+        System.out.println("=== DEBUG: DAO trả về " + (listDTO == null ? "null" : listDTO.size() + " rooms"));
 
-        // Convert RoomDTO => Room (business object)
+        // Convert RoomDTO => Room
         List<Room> rooms = convertToBusinessObjects(listDTO);
+        System.out.println("=== DEBUG: convertToBusinessObjects => " + rooms.size() + " rooms");
 
         // Convert Room => ViewRoomDTO
-        return convertToViewDTO(rooms);
+        List<ViewRoomDTO> result = convertToViewDTO(rooms);
+        System.out.println("=== DEBUG: convertToViewDTO => " + result.size() + " rooms");
+
+        return result;
     }
 
     private List<Room> convertToBusinessObjects(List<RoomDTO> dtos) {

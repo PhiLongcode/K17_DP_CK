@@ -9,6 +9,7 @@ public class ViewRoomDTO {
     public String roomType;
     public int numLightBulbs;
 
+
     public void setRoomID(String roomID) {
         this.roomID = roomID;
     }
