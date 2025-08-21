@@ -18,6 +18,7 @@ public class MainFrameUI extends javax.swing.JFrame {
 
         // Sidebar trái
         SidebarPanel sidebar = new SidebarPanel();
+        sidebar.setPreferredSize(new Dimension(280, 0));
         add(sidebar, BorderLayout.WEST);
 
         // Trung tâm: Filter + Table

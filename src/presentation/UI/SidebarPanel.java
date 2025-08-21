@@ -11,8 +11,8 @@ public class SidebarPanel extends JPanel {
         setBackground(new Color(52, 73, 94)); // xám đậm hơn cho sang
 
         addButton = createMenuButton("+ Thêm phòng");
-        avgAreaButton = createMenuButton("+ Tính trung bình diện tích");
-        totalRoomButton = createMenuButton("+ Tổng số lượng phòng");
+        avgAreaButton = createMenuButton("+ Tính trung bình " +"diện tích");
+        totalRoomButton = createMenuButton("+ Tổng số lượng " +"phòng");
 
         add(Box.createVerticalStrut(20));
         add(addButton);
@@ -25,7 +25,8 @@ public class SidebarPanel extends JPanel {
     private JButton createMenuButton(String text) {
         JButton button = new JButton(text);
         button.setAlignmentX(Component.CENTER_ALIGNMENT);
-        button.setMaximumSize(new Dimension(200, 40));
+        button.setMaximumSize(new Dimension(
+                250, 40));
         button.setBackground(new Color(41, 128, 185));
         button.setForeground(Color.WHITE);
         button.setFocusPainted(false);
