@@ -1,4 +1,4 @@
-package persistence.DeleteRoom;
+package persistence.delete.DeleteRoom;
 
 import persistence.ConnectDB;
 

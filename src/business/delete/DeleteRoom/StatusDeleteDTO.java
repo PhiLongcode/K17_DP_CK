@@ -1,4 +1,4 @@
-package business.DeleteRoom;
+package business.delete.DeleteRoom;
 
 public class StatusDeleteDTO {
     public String message;

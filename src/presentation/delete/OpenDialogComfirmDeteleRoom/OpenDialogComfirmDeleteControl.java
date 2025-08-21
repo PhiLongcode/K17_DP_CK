@@ -1,12 +1,13 @@
-package presentation.OpenDialogComfirmDeteleRoom;
+package presentation.delete.OpenDialogComfirmDeteleRoom;
 
-import business.OpenDialogComfirmDeteleRoom.OpenDialogComfirmDeteleRoomUseCase;
-import business.OpenDialogComfirmDeteleRoom.ResRoomDetailDTO;
+import business.delete.OpenDialogComfirmDeteleRoom.OpenDialogComfirmDeteleRoomUseCase;
+import business.delete.OpenDialogComfirmDeteleRoom.OpenDialogDeleteRoomInputBoundary;
+import business.delete.OpenDialogComfirmDeteleRoom.ResRoomDetailDTO;
 
 import java.text.SimpleDateFormat;
 
 public class OpenDialogComfirmDeleteControl {
-    OpenDialogComfirmDeteleRoomUseCase openDialogComfirmDeteleRoomUseCase;
+    OpenDialogDeleteRoomInputBoundary openDialogComfirmDeteleRoomUseCase;
     OpenDialogComfirmDeleteModel model;
     public OpenDialogComfirmDeleteControl(OpenDialogComfirmDeteleRoomUseCase openDialogComfirmDeteleRoomUseCase) {
         this.openDialogComfirmDeteleRoomUseCase = openDialogComfirmDeteleRoomUseCase;

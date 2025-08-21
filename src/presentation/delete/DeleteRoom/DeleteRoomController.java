@@ -1,8 +1,8 @@
-package presentation.DeleteRoom;
+package presentation.delete.DeleteRoom;
 
-import business.DeleteRoom.DeleteRoomUsecase;
-import business.DeleteRoom.StatusDeleteDTO;
-import presentation.DeleteRoom.DeleteRoomModel;
+import business.delete.DeleteRoom.DeleteRoomUsecase;
+import business.delete.DeleteRoom.StatusDeleteDTO;
+
 
 public class DeleteRoomController {
     private final DeleteRoomUsecase deleteRoomUseCase;

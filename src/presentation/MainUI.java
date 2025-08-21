@@ -1,20 +1,18 @@
 package presentation;
 
-import business.OpenDialogComfirmDeteleRoom.OpenDialogComfirmDeteleRoomUseCase;
-import persistence.OpenDialogComfirmDeteleRoom.MySQLOpenDialogComfirmDeteleRoomDAO;
-import persistence.OpenDialogComfirmDeteleRoom.OpenDialogComfirmDeteleRoomGateway;
-import persistence.OpenDialogComfirmDeteleRoom.RoomDTO;
-import presentation.OpenDialogComfirmDeteleRoom.OpenDialogComfirmDeleteControl;
-import presentation.OpenDialogComfirmDeteleRoom.OpenDialogComfirmDeleteModel;
-import presentation.OpenDialogComfirmDeteleRoom.OpenDialogConfirmDeleteRoomUI;
+import business.delete.OpenDialogComfirmDeteleRoom.OpenDialogComfirmDeteleRoomUseCase;
+import persistence.delete.OpenDialogComfirmDeteleRoom.MySQLOpenDialogComfirmDeteleRoomDAO;
+import persistence.delete.OpenDialogComfirmDeteleRoom.OpenDialogComfirmDeteleRoomGateway;
+import persistence.delete.OpenDialogComfirmDeteleRoom.RoomDTO;
+import presentation.delete.OpenDialogComfirmDeteleRoom.OpenDialogComfirmDeleteControl;
+import presentation.delete.OpenDialogComfirmDeteleRoom.OpenDialogComfirmDeleteModel;
+import presentation.delete.OpenDialogComfirmDeteleRoom.OpenDialogConfirmDeleteRoomUI;
 
 import javax.swing.*;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.ArrayList;
 

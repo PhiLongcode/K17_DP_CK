@@ -1,10 +1,10 @@
-package business.OpenDialogComfirmDeteleRoom;
+package business.delete.OpenDialogComfirmDeteleRoom;
 
 import business.entity.ComputerRoom;
 import business.entity.LaboratoryRoom;
 import business.entity.LectureRoom;
 import business.entity.Room;
-import persistence.OpenDialogComfirmDeteleRoom.RoomDTO;
+import persistence.delete.OpenDialogComfirmDeteleRoom.RoomDTO;
 
 
 public class RoomFactory {

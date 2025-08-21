@@ -1,4 +1,4 @@
-package presentation.OpenDialogComfirmDeteleRoom;
+package presentation.delete.OpenDialogComfirmDeteleRoom;
 
 import Observer.Publisher;
 

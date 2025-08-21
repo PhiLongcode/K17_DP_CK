@@ -1,6 +1,6 @@
-package business.DeleteRoom;
+package business.delete.DeleteRoom;
 
-import persistence.DeleteRoom.DeleteRoomGateway;
+import persistence.delete.DeleteRoom.DeleteRoomGateway;
 
 public class DeleteRoomUsecase {
     private final DeleteRoomGateway deleteRoomGateway;

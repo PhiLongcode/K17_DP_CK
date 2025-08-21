@@ -1,6 +1,5 @@
-package persistence.OpenDialogComfirmDeteleRoom;
+package persistence.delete.OpenDialogComfirmDeteleRoom;
 
-import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.Map;
 

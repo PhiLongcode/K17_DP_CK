@@ -1,13 +1,11 @@
-package presentation.OpenDialogComfirmDeteleRoom;
+package presentation.delete.OpenDialogComfirmDeteleRoom;
 import Observer.Subscriber;
-import business.DeleteRoom.DeleteRoomUsecase;
-import persistence.DeleteRoom.DeleteRoomGateway;
-import persistence.DeleteRoom.MySQLDeleteRoomDAO;
-import persistence.OpenDialogComfirmDeteleRoom.MySQLOpenDialogComfirmDeteleRoomDAO;
-import persistence.OpenDialogComfirmDeteleRoom.RoomDTO;
-import presentation.DeleteRoom.DeleteRoomController;
-import presentation.DeleteRoom.DeleteRoomModel;
-import presentation.DeleteRoom.DialogNotiDeleteRoomView;
+import business.delete.DeleteRoom.DeleteRoomUsecase;
+import persistence.delete.DeleteRoom.DeleteRoomGateway;
+import persistence.delete.DeleteRoom.MySQLDeleteRoomDAO;
+import presentation.delete.DeleteRoom.DeleteRoomController;
+import presentation.delete.DeleteRoom.DeleteRoomModel;
+import presentation.delete.DeleteRoom.DialogNotiDeleteRoomView;
 
 
 import javax.swing.*;

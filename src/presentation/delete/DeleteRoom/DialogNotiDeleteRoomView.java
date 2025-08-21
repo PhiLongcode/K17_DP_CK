@@ -1,4 +1,4 @@
-package presentation.DeleteRoom;
+package presentation.delete.DeleteRoom;
 
 import Observer.Subscriber;
 

@@ -1,4 +1,4 @@
-package persistence.OpenDialogComfirmDeteleRoom;
+package persistence.delete.OpenDialogComfirmDeteleRoom;
 
 import persistence.ConnectDB;
 

@@ -1,4 +1,4 @@
-package business.OpenDialogComfirmDeteleRoom;
+package business.delete.OpenDialogComfirmDeteleRoom;
 
 import java.util.Date;
 
