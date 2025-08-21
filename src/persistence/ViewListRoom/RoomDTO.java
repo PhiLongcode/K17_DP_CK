@@ -7,6 +7,7 @@ public class RoomDTO {
     public String buildingBlock;
     public Double area;
     public String roomType;
+
     public int numLightBulbs;
     public Date startDateOfOperation;
     public Boolean hasProject;
@@ -79,6 +80,11 @@ public class RoomDTO {
         this.hasSink = hasSink;
         this.typeId = typeId;
     }
+
+    public int getTypeId() {
+        return typeId;
+    }
+
     public RoomDTO() {}
     @Override
     public String toString() {

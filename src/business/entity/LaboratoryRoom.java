@@ -21,6 +21,6 @@ public class LaboratoryRoom extends Room {
 
     @Override
     public String getRoomType() {
-        return "LaboratoryRoom";
+        return "Laboratory Room";
     }
 }

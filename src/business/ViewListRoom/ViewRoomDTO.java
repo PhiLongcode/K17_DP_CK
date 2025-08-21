@@ -8,6 +8,10 @@ public class ViewRoomDTO {
     public Double area;
     public String roomType;
     public int numLightBulbs;
+    public Date startDateOfOperation;
+
+
+    public Boolean meetsStandard;
 
 
     public void setRoomID(String roomID) {
@@ -38,8 +42,5 @@ public class ViewRoomDTO {
         this.meetsStandard = meetsStandard;
     }
 
-    public Date startDateOfOperation;
 
-
-    public Boolean meetsStandard;
 }

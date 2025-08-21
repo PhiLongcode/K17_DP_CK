@@ -52,6 +52,7 @@ public class ViewRoomUseCase {
             dto.setRoomType(room.getRoomType());
             dto.setNumLightBulbs(room.getNumLightBulbs());
             dto.setStartDateOfOperation(room.getStartDateOfOperation());
+            dto.setMeetsStandard(room.meetsStandard());
             viewList.add(dto);
         }
         return viewList;

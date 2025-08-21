@@ -8,10 +8,10 @@ import persistence.RoomDTO;
 
 public class RoomFactory {
     public static Room createRoom(RoomDTO roomDTO) {
-        String type = roomDTO.roomType.toLowerCase();
+        int type = roomDTO.typeId;
 
         switch (type) {
-            case "computerroom":
+            case 1:
                 return new ComputerRoom(
                         roomDTO.roomID,
                         roomDTO.buildingBlock,
@@ -22,7 +22,7 @@ public class RoomFactory {
                         roomDTO.typeId
                 );
 
-            case "laboratoryroom":
+            case 2:
                 return new LaboratoryRoom(
                         roomDTO.roomID,
                         roomDTO.buildingBlock,
@@ -36,7 +36,7 @@ public class RoomFactory {
 
                 );
 
-            case "lectureroom":
+            case 3:
                 return new LectureRoom(
                         roomDTO.roomID,
                         roomDTO.buildingBlock,

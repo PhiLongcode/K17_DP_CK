@@ -17,6 +17,6 @@ public class LectureRoom extends Room {
 
     @Override
     public String getRoomType() {
-        return "LectureRoom";
+        return "Lecture Room";
     }
 }

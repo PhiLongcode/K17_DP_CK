@@ -117,7 +117,7 @@ public class OpenDialogConfirmDeleteRoomUI extends JDialog implements Subscriber
                     throw new RuntimeException(ex);
                 }
                 DeleteRoomUsecase uc = new DeleteRoomUsecase(gateway);
-DeleteRoomController controller = new DeleteRoomController(uc, model);
+                DeleteRoomController controller = new DeleteRoomController(uc, model);
 
                 DialogNotiDeleteRoomView view = new DialogNotiDeleteRoomView(parent,model );
 

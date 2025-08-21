@@ -17,7 +17,7 @@ public class ComputerRoom extends Room {
 
     @Override
     public String getRoomType() {
-        return "ComputerRoom";
+        return "Computer Room";
     }
 
 }
