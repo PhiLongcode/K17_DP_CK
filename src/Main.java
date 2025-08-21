@@ -1,5 +1,5 @@
 import business.usecase.OpenAddRoomUsecase;
-import dto.RoomTypeResDTO;
+import dto.RoomTypeViewDTO;
 import persistence.dao.OpenAddRoomTypeDAO;
 import persistence.gateway.OpenAddRoomGateway;
 import presentation.controller.OpenAddRoomController;
@@ -14,8 +14,8 @@ public class Main {
         OpenAddRoomUsecase openAddRoomUsecase = new OpenAddRoomUsecase(openAddRoomGateway);
         OpenAddRoomController openAddRoomController = new OpenAddRoomController(openAddRoomUsecase, openAddRoomModel);
         openAddRoomController.execute();
-        for (RoomTypeResDTO roomTypeResDTO : openAddRoomModel.roomTypeResDTO) {
-            System.out.println(roomTypeResDTO.getName());
+        for (RoomTypeViewDTO roomTypeViewDTO : openAddRoomModel.roomTypeViewDTOs) {
+            System.out.println(roomTypeViewDTO.getName());
         }
     }
 }

@@ -1,13 +1,11 @@
 package business.usecase;
 
-import business.entity.TypeRoom;
-import business.factory.TypeRoomFactory;
+import java.util.ArrayList;
+import java.util.List;
+
 import dto.RoomTypeDTO;
 import dto.RoomTypeViewDTO;
 import persistence.gateway.OpenAddRoomGateway;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class OpenAddRoomUsecase {
     private final OpenAddRoomGateway openAddRoomGateway;
@@ -17,29 +15,19 @@ public class OpenAddRoomUsecase {
     }
 
     public List<RoomTypeViewDTO> execute() {
-        List<RoomTypeDTO> list = openAddRoomGateway.GetAllRoomTypes();
-        List<TypeRoom> typeRoom = convertToBusinessObjects(list);
-        return convertToViews(typeRoom);
+        List<RoomTypeDTO> roomTypeDTOs = openAddRoomGateway.GetAllRoomTypes();
+        return convertToViewDTOs(roomTypeDTOs);
     }
 
-    private List<TypeRoom> convertToBusinessObjects(List<RoomTypeDTO> RoomTypeDTO) {
-        List<TypeRoom> list = new ArrayList<>();
-        for (RoomTypeDTO roomTypeViewDTO : RoomTypeDTO) {
-            TypeRoom roomtype = TypeRoomFactory.createTypeRoom(roomTypeViewDTO);
-            list.add(roomtype);
+    private List<RoomTypeViewDTO> convertToViewDTOs(List<RoomTypeDTO> roomTypeDTOs) {
+        List<RoomTypeViewDTO> viewDTOs = new ArrayList<>();
+        for (RoomTypeDTO dto : roomTypeDTOs) {
+            RoomTypeViewDTO viewDTO = new RoomTypeViewDTO();
+            viewDTO.setId(String.valueOf(dto.getId()));
+            viewDTO.setName(dto.getName());
+            viewDTO.setDescription(dto.getDescription());
+            viewDTOs.add(viewDTO);
         }
-        return list;
-    }
-
-    private List<RoomTypeViewDTO> convertToViews(List<TypeRoom> TypeRoom) {
-        List<RoomTypeViewDTO> list = new ArrayList<>();
-        for (TypeRoom room : TypeRoom) {
-            RoomTypeViewDTO roomTypeViewDTO = new RoomTypeViewDTO();
-            roomTypeViewDTO.setId(room.getId());
-            roomTypeViewDTO.setName(room.getName());
-            roomTypeViewDTO.setDescription(room.getDescription());
-            list.add(roomTypeViewDTO);
-        }
-        return list;
+        return viewDTOs;
     }
 }

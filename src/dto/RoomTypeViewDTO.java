@@ -1,11 +1,11 @@
 package dto;
 
 public class RoomTypeViewDTO {
-    private int id;
+    private String id;
     private String name;
     private String description;
 
-    public RoomTypeViewDTO(String name, String description, int id) {
+    public RoomTypeViewDTO(String id, String name, String description) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -14,11 +14,11 @@ public class RoomTypeViewDTO {
     public RoomTypeViewDTO() {
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

@@ -5,7 +5,7 @@ public class RoomTypeDTO {
     private String name;
     private String description;
 
-    public RoomTypeDTO(String name, String description, int id) {
+    public RoomTypeDTO(int id, String name, String description) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -20,7 +20,6 @@ public class RoomTypeDTO {
 
     public void setName(String name) {
         this.name = name;
-
     }
 
     public int getId() {

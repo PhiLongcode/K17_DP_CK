@@ -1,10 +1,10 @@
 package presentation.model;
 
-import Observer.Publisher;
-import dto.RoomTypeResDTO;
-
 import java.util.List;
 
+import Observer.Publisher;
+import dto.RoomTypeViewDTO;
+
 public class OpenAddRoomModel extends Publisher {
-    public List<RoomTypeResDTO> roomTypeResDTO;
+    public List<RoomTypeViewDTO> roomTypeViewDTOs;
 }

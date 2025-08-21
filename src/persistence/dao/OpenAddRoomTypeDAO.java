@@ -1,15 +1,15 @@
 package persistence.dao;
 
-import dto.RoomTypeDTO;
-import persistence.ConnectDB;
-import persistence.gateway.OpenAddRoomGateway;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
+import dto.RoomTypeDTO;
+import persistence.ConnectDB;
+import persistence.gateway.OpenAddRoomGateway;
 
 public class OpenAddRoomTypeDAO implements OpenAddRoomGateway {
     ConnectDB connectDB = new ConnectDB();

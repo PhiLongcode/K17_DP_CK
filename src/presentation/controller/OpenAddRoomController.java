@@ -1,12 +1,10 @@
 package presentation.controller;
 
+import java.util.List;
+
 import business.usecase.OpenAddRoomUsecase;
-import dto.RoomTypeResDTO;
 import dto.RoomTypeViewDTO;
 import presentation.model.OpenAddRoomModel;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class OpenAddRoomController {
     OpenAddRoomUsecase openAddRoomUsecase;
@@ -18,20 +16,8 @@ public class OpenAddRoomController {
     }
 
     public void execute() {
-        List<RoomTypeViewDTO> roomTypeViewDTO = openAddRoomUsecase.execute();
-        model.roomTypeResDTO = convertToString(roomTypeViewDTO);
+        List<RoomTypeViewDTO> roomTypeViewDTOs = openAddRoomUsecase.execute();
+        model.roomTypeViewDTOs = roomTypeViewDTOs;
         model.notifySubscribers();
-    }
-
-    private List<RoomTypeResDTO> convertToString(List<RoomTypeViewDTO> roomTypeViewDTO) {
-        List<RoomTypeResDTO> roomTypeResDTO = new ArrayList<>();
-        for (RoomTypeViewDTO roomTypeViewDTO1 : roomTypeViewDTO) {
-            RoomTypeResDTO roomTypeResDTO1 = new RoomTypeResDTO();
-            roomTypeResDTO1.setId(String.valueOf(roomTypeViewDTO1.getId()));
-            roomTypeResDTO1.setName(roomTypeViewDTO1.getName());
-            roomTypeResDTO1.getDescription(roomTypeViewDTO1.getDescription());
-            roomTypeResDTO.add(roomTypeResDTO1);
-        }
-        return roomTypeResDTO;
     }
 }
