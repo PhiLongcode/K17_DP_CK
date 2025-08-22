@@ -11,6 +11,7 @@ import presentation.SaveUpdateRoom.SaveUpdateRoomModel;
 import presentation.SaveUpdateRoom.SaveUpdateRoomView;
 import presentation.OpenUpdateRoomForm.RoomItem;
 
+
 import java.awt.*;
 import java.sql.SQLException;
 import java.util.List;
@@ -18,6 +19,7 @@ import java.text.SimpleDateFormat;
 
 public class OpenUpdateRoomFromView extends JFrame implements Subscriber {
     private OpenUpdateRoomFromModel model;
+    private RoomUpdateCallback callback;
 
     // Common fields
     private JTextField txtRoomId, txtBuilding, txtArea, txtNumOfLights;
@@ -32,8 +34,9 @@ public class OpenUpdateRoomFromView extends JFrame implements Subscriber {
     // Nút lưu và hủy
     private JButton btnSave, btnCancel;
 
-    public OpenUpdateRoomFromView(OpenUpdateRoomFromModel model) {
+    public OpenUpdateRoomFromView(OpenUpdateRoomFromModel model, RoomUpdateCallback callback) {
         this.model = model;
+        this.callback = callback;
         this.model.addSubscriber(this);
 
         setTitle("Cập nhật thông tin phòng");
@@ -203,7 +206,7 @@ public class OpenUpdateRoomFromView extends JFrame implements Subscriber {
         // ===== Gọi Controller =====
         SaveUpdateRoomController controller = new SaveUpdateRoomController(model, uc);
         
-        new SaveUpdateRoomView(model);
+        new SaveUpdateRoomView(model,callback,this);
         
         controller.execute(room);
     }

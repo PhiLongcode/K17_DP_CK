@@ -4,7 +4,9 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.table.*;
 
 import business.OpenUpdateRoomForm.OpenUpdateRoomFormUseCase;
+import business.ViewListRoom.ViewListRoomUseCase;
 import persistence.OpenUpdateRoomForm.MySQLOpenUpdateRoomFromDAO;
+import persistence.ViewListRoom.MySQLViewListRoomDAO;
 import presentation.OpenUpdateRoomForm.OpenUpdateRoomFromController;
 import presentation.OpenUpdateRoomForm.OpenUpdateRoomFromModel;
 import presentation.OpenUpdateRoomForm.OpenUpdateRoomFromView;
@@ -84,6 +86,28 @@ public class ViewListRoomView extends JFrame implements Subscriber {
 
         JButton btnRefresh = new JButton("Làm mới");
         searchPanel.add(btnRefresh);
+        
+        btnRefresh.addActionListener(e -> {
+        	MySQLViewListRoomDAO gateway = null;
+			try {
+				gateway = new MySQLViewListRoomDAO();
+			} catch (ClassNotFoundException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+        	ViewListRoomUseCase uc = new ViewListRoomUseCase(gateway);
+   
+        	ViewListRoomController controller = new ViewListRoomController(viewModel, uc);
+            try {
+                controller.execute(); 
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(this, "Lỗi khi làm mới dữ liệu: " + ex.getMessage());
+                ex.printStackTrace();
+            }
+        });
 
         mainPanel.add(searchPanel, BorderLayout.NORTH);
 
@@ -153,22 +177,32 @@ public class ViewListRoomView extends JFrame implements Subscriber {
 
          // Gán sự kiện cho nút Edit
             btnEdit.addActionListener(e -> {
-                // Lấy mã phòng từ dòng hiện tại
                 String maPhong = table.getValueAt(currentRow, 1).toString();
+
                 MySQLOpenUpdateRoomFromDAO dao = null;
                 try {
-					dao = new MySQLOpenUpdateRoomFromDAO();
-				} catch (ClassNotFoundException | SQLException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-                
+                    dao = new MySQLOpenUpdateRoomFromDAO();
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+
                 OpenUpdateRoomFromModel model = new OpenUpdateRoomFromModel();
                 OpenUpdateRoomFormUseCase uc = new OpenUpdateRoomFormUseCase(dao);
                 OpenUpdateRoomFromController controller = new OpenUpdateRoomFromController(uc, model);
-                
-                new OpenUpdateRoomFromView(model);
-                
+
+                // 👇 Truyền callback
+                OpenUpdateRoomFromView updateView = new OpenUpdateRoomFromView(model, () -> {
+                    // Gọi lại controller của danh sách để load lại dữ liệu
+                    try {
+                        MySQLViewListRoomDAO gateway = new MySQLViewListRoomDAO();
+                        ViewListRoomUseCase listUc = new ViewListRoomUseCase(gateway);
+                        ViewListRoomController listController = new ViewListRoomController(viewModel, listUc);
+                        listController.execute();
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
+                });
+
                 try {
 					controller.execute(maPhong);
 				} catch (SQLException e1) {
@@ -176,6 +210,7 @@ public class ViewListRoomView extends JFrame implements Subscriber {
 					e1.printStackTrace();
 				}
             });
+
         }
 
         private int currentRow;

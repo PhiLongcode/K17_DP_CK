@@ -4,9 +4,6 @@ import persistence.ViewListRoom.RoomDTO;
 
 public class RoomFactory {
 	 public static Room createRoom(RoomDTO dto) {
-		 
-		 System.out.println("Factory nhận typeName = " + dto.typeName);
-		 
 	        switch (dto.typeName) {
 	            case "Phòng học lý thuyết":
 	                return new TheoryRoom(dto.roomId, dto.buildingBlock, dto.area, dto.numOfLights,
