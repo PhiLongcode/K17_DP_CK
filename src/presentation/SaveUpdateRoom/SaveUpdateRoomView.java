@@ -3,10 +3,10 @@ package presentation.SaveUpdateRoom;
 import javax.swing.*;
 import presentation.SaveUpdateRoom.SaveUpdateRoomModel;
 
-public class SaveUpdateRoomUI extends JFrame implements Subscriber {
+public class SaveUpdateRoomView extends JFrame implements Subscriber {
     private SaveUpdateRoomModel model;
 
-    public SaveUpdateRoomUI(SaveUpdateRoomModel model) {
+    public SaveUpdateRoomView(SaveUpdateRoomModel model) {
         this.model = model;
         model.addSubscriber(this);
         initUI();
@@ -23,9 +23,9 @@ public class SaveUpdateRoomUI extends JFrame implements Subscriber {
     public void update() {
         boolean status = model.getStatus();
         if (status) {
-            JOptionPane.showMessageDialog(this, "Room saved/updated successfully!");
+            JOptionPane.showMessageDialog(this, "Thông tin phòng được cập nhật thành công!");
         } else {
-            JOptionPane.showMessageDialog(this, "Failed to save/update room.");
+            JOptionPane.showMessageDialog(this, "Thông tin phòng được cập nhật thất bại.");
         }
     }
 }

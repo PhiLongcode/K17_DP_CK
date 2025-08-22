@@ -8,7 +8,7 @@ import business.SaveUpdateRoom.SaveUpdateRoomUseCase;
 import persistence.SaveUpdateRoom.MySQLSaveUpdateRoomDAO;
 import presentation.SaveUpdateRoom.SaveUpdateRoomController;
 import presentation.SaveUpdateRoom.SaveUpdateRoomModel;
-import presentation.SaveUpdateRoom.SaveUpdateRoomUI;
+import presentation.SaveUpdateRoom.SaveUpdateRoomView;
 import presentation.OpenUpdateRoomForm.RoomItem;
 
 import java.awt.*;
@@ -16,7 +16,7 @@ import java.sql.SQLException;
 import java.util.List;
 import java.text.SimpleDateFormat;
 
-public class OpenUpdateRoomFromUI extends JFrame implements Subscriber {
+public class OpenUpdateRoomFromView extends JFrame implements Subscriber {
     private OpenUpdateRoomFromModel model;
 
     // Common fields
@@ -32,7 +32,7 @@ public class OpenUpdateRoomFromUI extends JFrame implements Subscriber {
     // Nút lưu và hủy
     private JButton btnSave, btnCancel;
 
-    public OpenUpdateRoomFromUI(OpenUpdateRoomFromModel model) {
+    public OpenUpdateRoomFromView(OpenUpdateRoomFromModel model) {
         this.model = model;
         this.model.addSubscriber(this);
 
@@ -53,6 +53,7 @@ public class OpenUpdateRoomFromUI extends JFrame implements Subscriber {
         gbc.fill = GridBagConstraints.HORIZONTAL;
 
         txtRoomId = new JTextField();
+        txtRoomId.setEditable(false);
         txtBuilding = new JTextField();
         txtArea = new JTextField();
         txtNumOfLights = new JTextField();
@@ -97,7 +98,7 @@ public class OpenUpdateRoomFromUI extends JFrame implements Subscriber {
         
      // Hành động cho nút 
         btnCancel.addActionListener(e -> dispose()); 
-        btnSave.addActionListener(e -> onSave()); // xử lý lưu
+        btnSave.addActionListener(e -> onSave());
 
         setVisible(true);
     }
@@ -202,7 +203,7 @@ public class OpenUpdateRoomFromUI extends JFrame implements Subscriber {
         // ===== Gọi Controller =====
         SaveUpdateRoomController controller = new SaveUpdateRoomController(model, uc);
         
-        new SaveUpdateRoomUI(model);
+        new SaveUpdateRoomView(model);
         
         controller.execute(room);
     }
